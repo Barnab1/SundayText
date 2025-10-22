@@ -30,42 +30,75 @@ function App() {
   const [evangile, setEvangile] = useState('');
   const [commentaire, setCommentaire] = useState('');
   const [lecture, setLecture] = useState('');
+  const [refLecture1, setRefLecture1] = useState('');
+  const [refLecture2, setRefLecture2] = useState('');
+  const [refEvangile, setRefEvangile] = useState('');
+  const [refLecture, setRefLecture] = useState('');
 
 
   const handleDateChange = (date)=>{
     console.log(date);
     
     let dayText = sundayText.find(sunday=> sunday.date === date);
+
     if(dayText){
-     setFirstLecture(dayText.lectures.lecture1);
-     setSecondLecture(dayText.lectures.lecture2);
-     setEvangile(dayText.lectures.evangile);
-     setCommentaire(dayText.lectures.commentaire);
-     setLecture(dayText.lectures.lecture1) ;
+      setRefLecture1(dayText.references?.lecture1);
+     setFirstLecture(dayText.lectures?.lecture1);
+
+      setRefLecture2(dayText.references?.lecture2);
+     setSecondLecture(dayText.lectures?.lecture2);
+ 
+      setRefEvangile(dayText.references?.evangile);
+     setEvangile(dayText.lectures?.evangile);
+
+     setCommentaire(dayText.lectures?.commentaire);
+     setLecture(dayText.lectures?.lecture1) ;
+     setRefLecture(dayText.references?.lecture1);
      setError('');
     }else{
       setError('Aucun texte disponible pour cette date');
       setFirstLecture('');
       setSecondLecture('');
       setEvangile('');
-      setCommentaire('');
+      setCommentaire(''); 
       setLecture('');
+      setRefLecture1('');
+      setRefLecture2('');
+      setRefEvangile('');
+      setRefLecture('');
     }
 
   } 
 
   return (
     <div>
-      <Header eventDate={(e)=> handleDateChange(e.target.value)} eventLecture={(val)=>{
-        val === 'lecture1' && setLecture(firstLecture)
-        val === 'lecture2' && setLecture(secondLecture)
-        val === 'evangile' && setLecture(evangile)
-        val === 'commentaire' && setLecture(commentaire)
+      <Header eventDate={(e)=> handleDateChange(e.target.value)} 
+      eventLecture={(val)=>{
+       if(val === 'lecture1'){
+
+        setLecture(firstLecture);
+        setRefLecture(refLecture1)
+
+       }else if(val === 'lecture2'){
+        setLecture(secondLecture);
+        setRefLecture(refLecture2)
+
+       }else if(val === 'evangile'){
+        setLecture(evangile);
+        setRefLecture(refEvangile)
+
+       }else if(val === 'commentaire'){
+        setLecture(commentaire);
+        setRefLecture('')
+       }
         
       }}/>
 
         <div>
-          {lecture}
+          {refLecture && <p>Références: <strong> {refLecture} </strong></p>}
+
+          <p>{lecture}</p>
+
           {error && <p>{error}</p>}
         </div>
     </div>

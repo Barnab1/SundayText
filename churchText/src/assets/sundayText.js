@@ -1,6 +1,12 @@
 
 const sundayText = [
     {
+        "date":"2025-10-19",
+        "references": {},
+        "lectures":{}
+    },
+
+    {
         "date":"2025-10-26",
         "references": {
             "lecture1":"Si 35, 15b-17.20-22a",
