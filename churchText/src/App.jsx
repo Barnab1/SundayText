@@ -1,21 +1,27 @@
 import sundayText from './assets/sundayText';
 import {useState} from 'react';
+import './App.css';
 /**
  * Display the fixed top buttons
  */
 const Header = ({eventDate, eventLecture})=>{
   return (
-    <div>
-      <form>
-        <label htmlFor='date'>Date: </label>
+    <div className='header'>
+      <div>
+        <h1>Textes du dimanche</h1>
+      </div>
+
+      <form className="date-form" onSubmit={e=> e.preventDefault()}>
+
+        <label htmlFor='date'>Choisissez une date: </label>
         <input type="date" id='date' onChange= {eventDate} />
       </form>
 
-      <div>
-        <button className="btn" onClick={() => eventLecture('lecture1')}>Lecture 1</button>
-        <button className="btn" onClick={() => eventLecture('lecture2')}>Lecture 2</button>
-        <button className="btn" onClick={() => eventLecture('evangile')}>Evangile</button>
-        <button className="btn" onClick={() => eventLecture('commentaire')}>Commentaire</button>
+      <div className="button-group">
+        <button className="btn" type="button" onClick={() => eventLecture('lecture1')}>Lecture 1</button>
+        <button className="btn" type="button" onClick={() => eventLecture('lecture2')}>Lecture 2</button>
+        <button className="btn" type="button" onClick={() => eventLecture('evangile')}>Evangile</button>
+        <button className="btn" type="button" onClick={() => eventLecture('commentaire')}>Commentaire</button>
       </div>
     </div>
   )
@@ -52,11 +58,13 @@ function App() {
      setEvangile(dayText.lectures?.evangile);
 
      setCommentaire(dayText.lectures?.commentaire);
+
      setLecture(dayText.lectures?.lecture1) ;
      setRefLecture(dayText.references?.lecture1);
+
      setError('');
     }else{
-      setError('Aucun texte disponible pour cette date');
+      setError('Ce texte n\'est pas disponible pour cette date');
       setFirstLecture('');
       setSecondLecture('');
       setEvangile('');
@@ -71,7 +79,7 @@ function App() {
   } 
 
   return (
-    <div>
+    <div className='main-part'>
       <Header eventDate={(e)=> handleDateChange(e.target.value)} 
       eventLecture={(val)=>{
        if(val === 'lecture1'){
@@ -94,12 +102,12 @@ function App() {
         
       }}/>
 
-        <div>
-          {refLecture && <p>Références: <strong> {refLecture} </strong></p>}
+        <div className="content">
+          {refLecture && <p className="reference-text">Références: <strong> {refLecture} </strong></p>}
 
-          <p>{lecture}</p>
+          <p className="lecture-text">{lecture}</p>
 
-          {error && <p>{error}</p>}
+          {error && <p className="error-text">{error}</p>}
         </div>
     </div>
 
