@@ -1,19 +1,18 @@
-# SundayText
-Hi friend 🖐️, here is a simple browser App a build to read and meditate on Sunday Text due to my company restrictions
+# What is SundayText for you ?
+Hi friend 🖐️, here is a simple browser App a build to read and meditate on Catholic Sunday Text
 
-## Genesis
-The idea to start SundayText came to me when I could not any more read Sunday Text on christian websites due to my company's system restrictions.
+## Why SundayText ?
+The idea to start SundayText came to me when I could not any more read Sunday Text on christian websites due to some restrictions I used at work.
 
-## Core features 🎇
-Presently SundayText will help reading for coming sunday: 
+## How this project can help you ? 🎇
+SundayText will help reading for coming sunday: 
 
  * First Text,
  * Second Text,
  * Gospel
  * Few comments 
 
- ## Contributions
+ ## How can you get started ?
 
- I welcome every contributions to extend the project even further I can even think
 
 
