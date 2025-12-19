@@ -31,11 +31,14 @@ const Header = ({eventDate, eventLecture})=>{
 function App() {
   
   const [error, setError] = useState('');
+
   const [firstLecture, setFirstLecture] = useState('');
   const [secondLecture, setSecondLecture] = useState('');
   const [evangile, setEvangile] = useState('');
   const [commentaire, setCommentaire] = useState('');
+
   const [lecture, setLecture] = useState('');
+  
   const [refLecture1, setRefLecture1] = useState('');
   const [refLecture2, setRefLecture2] = useState('');
   const [refEvangile, setRefEvangile] = useState('');
